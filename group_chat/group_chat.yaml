@@ -1,0 +1,46 @@
+name: group_chat
+enabled: true
+required: false
+description: >-
+  This plugin empowers TaskWeaver to act as a proxy for users within a shared group chat environment. 
+  Users can engage in discussions with others through their respective TaskWeaver proxies. 
+  The plugin allows users to fetch messages from the chat, with an emphasis on topics of interest, 
+  and to post messages into the chat. The behavior, such as the focus on certain topics or personality, 
+  can be customized through the plugin configuration. TaskWeaver should review fetch with expectation to post.
+  Default plugin usage should action="fetch"
+
+examples: |-
+  # Fetch recent messages from the group chat, focusing on configured topics
+  - group_chat(action="fetch")
+  
+  # Post a custom message to the group chat
+  - group_chat(action="post", message="Exciting developments in AI today!")
+
+parameters:
+  - name: action
+    type: str
+    required: true
+    default: "fetch"
+    description: The action to perform. 'fetch' for retrieving messages, or 'post' for sending messages.
+  - name: message
+    type: str
+    required: false
+    description: The message to post to the group chat.
+  - name: username
+    type: str
+    required: false
+    description: The username under which TaskWeaver will post messages. Ignored in 'fetch' mode.
+
+returns:
+  - name: response
+    type: str
+    description: The result of the action, which could be a list of messages, a confirmation of the posted message.
+
+configurations:
+  lambda_url: "https://m7cjbptdpsuj56rrx7e6qhq7ou0svley.lambda-url.us-west-2.on.aws/" # Mad_Dog_JT lambda be respectful please :)
+  topics: ["generative AI", "TaskWeaver updates", "technology news"]
+  username: "TaskWeaver"  # Customize your username
+  personality: "talkative and helpful"  # Default personality style. Can be changed to others like "talkative and helpful" or "interesting and science-focused".
+  # Examples of other personalities (uncomment to use):
+  # personality: "talkative and helpful"
+  # personality: "interesting and science-focused"

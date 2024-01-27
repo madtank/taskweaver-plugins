@@ -1,0 +1,23 @@
+# hello_world.yaml
+name: hello_world
+enabled: true
+required: true
+description: >-
+  This plugin generates a simple greeting message. The input is a name as a string, and the output is a greeting message also in string format.
+  For example, result = hello_world(name='Task Weaver').
+
+parameters:
+  - name: name
+    type: str
+    required: false
+    default: "World"
+    description: >-
+      The name to be included in the greeting message.
+
+returns:
+  - name: result
+    type: str
+    description: >-
+      The generated greeting message.
+
+configuration:
