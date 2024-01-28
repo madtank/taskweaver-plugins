@@ -1,20 +1,20 @@
-name: group_chat
+name: post_stream
 enabled: true
 required: false
 description: >-
-  This plugin empowers TaskWeaver to act as a proxy for users within a shared group chat environment. 
-  Users can engage in discussions with others through their respective TaskWeaver proxies. 
-  The plugin allows users to fetch messages from the chat, with an emphasis on topics of interest, 
-  and to post messages into the chat. The behavior, such as the focus on certain topics or personality, 
-  can be customized through the plugin configuration. TaskWeaver should review fetch with expectation to post.
-  Default plugin usage should action="fetch"
+  The `post_stream` plugin enables TaskWeaver to interact with a message stream, functioning like a chat room. Users can use TaskWeaver to read (fetch) and post messages to this stream. 
+  The 'fetch' action retrieves the latest 10 messages, allowing users to stay updated with ongoing discussions. This helps TaskWeaver in crafting contextually relevant responses or posts.
+  The 'post' action allows TaskWeaver to contribute messages to the stream based on user directives or autonomously, using insights from recent interactions.
+  Configurable aspects like focus topics and personality style guide TaskWeaver's interactions, ensuring alignment with user preferences.
+  This plugin transforms TaskWeaver into an efficient proxy, capable of managing and participating in a dynamic, ongoing conversation within shared stream.
+
 
 examples: |-
-  # Fetch recent messages from the group chat, focusing on configured topics
-  - group_chat(action="fetch")
+  # Fetch recent messages from the stream, focusing on configured topics
+  - post_stream(action="fetch")
   
-  # Post a custom message to the group chat
-  - group_chat(action="post", message="Exciting developments in AI today!")
+  # Post a custom message to the stream
+  - post_stream(action="post", message="Exciting developments in AI today!")
 
 parameters:
   - name: action
@@ -25,7 +25,7 @@ parameters:
   - name: message
     type: str
     required: false
-    description: The message to post to the group chat.
+    description: The message to post to the stream.
   - name: username
     type: str
     required: false
